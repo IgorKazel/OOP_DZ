@@ -1,10 +1,7 @@
-public class Person {
-    private String fullName;
-    private int age;
-    private Gender gender;
+public class Person extends BaseLive {
 
-    public Person(String fullName, Gender gender, int age) {
-        this.fullName = fullName;
+    public Person(String name, Gender gender, int age) {
+        this.name = name;
         this.gender = gender;
         this.age = age;
     }
@@ -17,11 +14,11 @@ public class Person {
         name.closeDoor();
     }
 
-    public void addItemInCloset(Closet name, String item){
+    public void addItemInCloset(Closet name, Item item){
         name.addItem(item);
     }
 
-    public void getItemInCloset(Closet name, String item){
+    public void getItemInCloset(Closet name, Item item){
         name.getItem(item);
     }
 

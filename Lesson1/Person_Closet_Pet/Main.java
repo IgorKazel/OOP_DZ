@@ -3,16 +3,18 @@ public class Main {
         Person person = new Person("Иван", Gender.male, 25);
         Closet closet = new Closet("Шкаф", 5);
         Cat cat = new Cat("Белка", Gender.female, 4);
+        Item tshirt = new Item("Майка");
+        Item cap = new Item("Кружка");
 
         person.openCloset(closet);
         step();
-        person.addItemInCloset(closet, "Майка");
+        person.addItemInCloset(closet, tshirt);
         step();
-        person.addItemInCloset(closet, "Кружка");
+        person.addItemInCloset(closet, cap);
         step();
         person.seeInCloset(closet);
         step();
-        person.getItemInCloset(closet, "Майка");
+        person.getItemInCloset(closet, tshirt);
         step();
         person.seeInCloset(closet);
         step();

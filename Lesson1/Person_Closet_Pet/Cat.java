@@ -1,7 +1,4 @@
-public class Cat {
-    private String name;
-    private int age;
-    private Gender gender;
+public class Cat extends BaseLive implements Pet {
     private boolean isNear;
 
     public Cat(String name, Gender gender, int age) {
@@ -11,6 +8,7 @@ public class Cat {
         this.isNear = false;
     }
 
+    @Override
     public void comePerson() {
         if (isNear) {
             System.out.println(name + " и так рядом");
@@ -20,6 +18,7 @@ public class Cat {
         }
     }
 
+    @Override
     public void leavePerson() {
         if (isNear) {
             isNear = false;
@@ -29,6 +28,7 @@ public class Cat {
         }
     }
 
+    @Override
     public void joy() {
         if (isNear) {
             System.out.println(name + " довольна");
@@ -37,6 +37,8 @@ public class Cat {
             System.out.println(name + " не рядом");
         }
     }
+
+    @Override
     public void eat() {
         if (isNear){
             System.out.println(name + " ест");

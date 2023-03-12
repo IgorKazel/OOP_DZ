@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
-public class Closet {
-    private String name;
+public class Closet extends BaseItem {
     private int size;
-    private ArrayList<String> storage;
+    private ArrayList<Item> storage;
     private boolean isOpen;
 
     public Closet(String name, int size){
@@ -32,11 +31,11 @@ public class Closet {
         }
     }
 
-    public void addItem(String item) {
+    public void addItem(Item item) {
         if (isOpen) {
             if (storage.size() < size){
                 storage.add(item);
-                System.out.println(item + " положена в " + name);
+                System.out.println(item.getName() + " положена в " + name);
             } else {
                 System.out.println("Нет места в " + name);
             }
@@ -45,13 +44,13 @@ public class Closet {
         }
     }
 
-    public void getItem(String item) {
+    public void getItem(Item item) {
         if (isOpen) {
             if (storage.contains(item)) {
                 storage.remove(item);
-                System.out.println(item + " взята из " + name);
+                System.out.println(item.getName() + " взята из " + name);
             } else {
-                System.out.println("Нет " + item + " в " + name);
+                System.out.println("Нет " + item.getName() + " в " + name);
             }
         } else {
             System.out.println("Сначала нужно открыть двери " + name);
@@ -61,7 +60,9 @@ public class Closet {
     public void printAllItem() {
         if (isOpen) {
             System.out.println("Все вещи в " + name + ":");
-            System.out.println(storage.toString());
+            for (int i = 0; i < storage.size(); i++) {
+                System.out.println(storage.get(i).getName());
+            }
         } else {
             System.out.println("Сначала нужно открыть двери " + name);
         }
