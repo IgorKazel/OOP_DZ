@@ -1,4 +1,4 @@
-public class Person {
+public class Person implements Comparable<Person> {
     private String fullName;
     private int age;
     private Gender gender;
@@ -43,5 +43,33 @@ public class Person {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString(){
+        return fullName;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        } else if (this.getClass() != obj.getClass()){
+            return false;
+        } else if (this.getFullName().equals(((Person) obj).getFullName()) && this.getAge() == ((Person) obj).getAge() && this.getGender() == ((Person) obj).getGender()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int compareTo(Person obj){
+        return this.getAge() - obj.getAge();
     }
 }

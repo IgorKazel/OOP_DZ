@@ -8,34 +8,26 @@ public class Cat extends BaseLive implements Pet {
         this.isNear = false;
     }
 
+    public boolean getIsNear(){
+        return isNear;
+    }
+
     @Override
     public void comePerson() {
-        if (isNear) {
-            System.out.println(name + " и так рядом");
-        } else {
             isNear = true;
             System.out.println(name + " подошла");
-        }
     }
 
     @Override
     public void leavePerson() {
-        if (isNear) {
-            isNear = false;
-            System.out.println(name + " убежала");
-        } else {
-            System.out.println(name + " не рядом");
-        }
+        isNear = false;
+        System.out.println(name + " убежала");
     }
 
     @Override
     public void joy() {
-        if (isNear) {
             System.out.println(name + " довольна");
             System.out.println("Мррррр");
-        } else {
-            System.out.println(name + " не рядом");
-        }
     }
 
     @Override
@@ -48,5 +40,16 @@ public class Cat extends BaseLive implements Pet {
             System.out.println(name + " подошла и ест");
             System.out.println("Хрум хрум хрум");
         }
+    }
+
+    public void askEat(Person person){
+        if (isNear){
+            System.out.println(name + "просит есть");
+        } else {
+            isNear = true;
+            System.out.println(name + " подошла и просит есть");
+        }
+        System.out.println("Мяяяяяу");
+        person.feedCat(this);
     }
 }

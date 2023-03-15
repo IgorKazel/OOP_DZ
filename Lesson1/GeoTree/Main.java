@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         Person yura = new Person("Юра", Gender.male, 62);
@@ -8,6 +11,19 @@ public class Main {
         Person masha = new Person("Маша", Gender.female, 40);
         Person jane = new Person("Женя", Gender.female, 19);
         Person ivan = new Person("Ваня", Gender.male, 15);
+
+        ArrayList<Person> list = new ArrayList<>();
+        list.add(yura);
+        list.add(irina);
+        list.add(petya);
+        list.add(katya);
+        list.add(vasya);
+        list.add(masha);
+        list.add(jane);
+        list.add(ivan);
+        System.out.println(list);
+        Collections.sort(list);
+        System.out.println(list);
 
         GeoTree gt = new GeoTree();
         gt.addChildren(yura, vasya);

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         Person person = new Person("Иван", Gender.male, 25);
@@ -24,7 +27,7 @@ public class Main {
         step();
         person.kickAwayCat(cat);
         step();
-        person.feedCat(cat);
+        cat.askEat(person);
         step();
         person.petCat(cat);
     }
