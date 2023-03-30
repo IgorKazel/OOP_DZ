@@ -1,12 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Contact implements Comparable<Contact> {
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    private List<String> phoneNumber = new ArrayList<>();
 
     public Contact(String firstName, String lastName, String phoneNumber){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
+    }
+
+    public Contact(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Contact(){
@@ -28,12 +36,21 @@ public class Contact implements Comparable<Contact> {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
+    public List<String> getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.clear();
+        this.phoneNumber.add(phoneNumber);
+    }
+
+    public void addPhoneNumber(String phoneNumber) {
+        this.phoneNumber.add(phoneNumber);
+    }
+
+    public void removePhoneNumber(String phoneNumber) {
+        this.phoneNumber.remove(phoneNumber);
     }
 
     @Override

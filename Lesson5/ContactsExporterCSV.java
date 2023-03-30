@@ -8,7 +8,10 @@ public class ContactsExporterCSV implements ContactsExporter {
     public void exportContacts(List<Contact> contacts, String fileName){
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName + ".csv"))) {
             for (Contact contact : contacts) {
-                bufferedWriter.write(contact.getFirstName() + "," + contact.getLastName() + "," + contact.getPhoneNumber());
+                bufferedWriter.write(contact.getFirstName() + "," + contact.getLastName());
+                for (int i = 0; i < contact.getPhoneNumber().size(); i++) {
+                    bufferedWriter.write("," + contact.getPhoneNumber().get(i));
+                }
                 bufferedWriter.newLine();
             }
         } catch (IOException e) {

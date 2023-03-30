@@ -10,11 +10,13 @@ public class PhonebookMenu {
         while (true) {
             System.out.println("\nВведите номер действия:\n" +
                     "1. Добавить контакт\n" +
-                    "2. Удалить контакт\n" +
-                    "3. Поиск контакта\n" +
-                    "4. Вывести все контакты\n" +
-                    "5. Импортировать контакты из файла\n" +
-                    "6. Экспортировать контакты в файл\n" +
+                    "2. Добавить контакту номер телефона\n" +
+                    "3. Удалить контакту номер телефона\n" +
+                    "4. Удалить контакт\n" +
+                    "5. Поиск контакта\n" +
+                    "6. Вывести все контакты\n" +
+                    "7. Импортировать контакты из файла\n" +
+                    "8. Экспортировать контакты в файл\n" +
                     "0. Выход\n");
 
             int choice = scanner.nextInt();
@@ -22,11 +24,13 @@ public class PhonebookMenu {
 
             switch (choice) {
                 case 1 -> phonebook.addContact(scanner);
-                case 2 -> phonebook.removeContact(scanner);
-                case 3 -> phonebook.searchContact(scanner);
-                case 4 -> phonebook.printAllContacts();
-                case 5 -> importContacts(scanner, phonebook);
-                case 6 -> exportContacts(scanner, phonebook);
+                case 2 -> phonebook.addContactPhone(scanner);
+                case 3 -> phonebook.removeContactPhone(scanner);
+                case 4 -> phonebook.removeContact(scanner);
+                case 5 -> phonebook.searchContact(scanner);
+                case 6 -> phonebook.printAllContacts();
+                case 7 -> importContacts(scanner, phonebook);
+                case 8 -> exportContacts(scanner, phonebook);
                 case 0 -> {
                     scanner.close();
                     System.exit(0);

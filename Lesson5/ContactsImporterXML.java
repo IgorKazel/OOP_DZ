@@ -37,7 +37,7 @@ public class ContactsImporterXML implements ContactsImporter {
                                 contact.setLastName(data);
                                 break;
                             case "phoneNumber":
-                                contact.setPhoneNumber(data);
+                                contact.addPhoneNumber(data);
                                 break;
                         }
                     }

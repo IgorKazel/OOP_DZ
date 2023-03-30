@@ -12,7 +12,10 @@ public class ContactsImporterCSV implements ContactsImporter {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split(",");
-                Contact contact = new Contact(parts[0], parts[1], parts[2]);
+                Contact contact = new Contact(parts[0], parts[1]);
+                for (int i = 2; i < parts.length; i++) {
+                    contact.addPhoneNumber(parts[i]);
+                }
                 contacts.add(contact);
             }
         } catch (IOException e) {

@@ -54,6 +54,80 @@ public class Phonebook {
         }
     }
 
+    public void addContactPhone(Scanner scanner) {
+        System.out.print("Введите имя, фамилию или номер телефона контакта (или часть): ");
+        String contactPart = scanner.next();
+        int index = 0;
+        List<Contact> contactsToAddNumber = new ArrayList<>();
+        for (Contact contact : contacts) {
+            if (contact.toString().contains(contactPart)) {
+                contactsToAddNumber.add(contact);
+                index++;
+                System.out.println(index + ". " + contact);
+            }
+        }
+        if (index != 0) {
+            System.out.println("Введите номер контакта для добавления номера телефона (0 - отмена)");
+            index = scanner.nextInt();
+            if (index > 0 && index <= contactsToAddNumber.size()){
+                System.out.print("Введите номер телефона: ");
+                String phoneNumber = scanner.next();
+                Contact contactToAddNumber = contactsToAddNumber.get(index - 1);
+                for (Contact contact : contacts) {
+                    if (contactToAddNumber.equals(contact)) {
+                        contact.addPhoneNumber(phoneNumber);
+                    }
+                }
+                System.out.println("Номер телефона добавлен");
+            } else if (index == 0) {
+                System.out.println("Добавление номера отменено");
+            } else {
+                System.out.println("Неверный номер");
+            }
+        } else {
+            System.out.println("Контакты не найдены");
+        }
+    }
+
+    public void removeContactPhone(Scanner scanner) {
+        System.out.print("Введите имя, фамилию или номер телефона контакта (или часть): ");
+        String contactPart = scanner.next();
+        int index = 0;
+        List<Contact> contactsToRemoveNumber = new ArrayList<>();
+        for (Contact contact : contacts) {
+            if (contact.toString().contains(contactPart)) {
+                contactsToRemoveNumber.add(contact);
+                index++;
+                System.out.println(index + ". " + contact);
+            }
+        }
+        if (index != 0) {
+            System.out.println("Введите номер контакта для удаления номера телефона (0 - отмена)");
+            index = scanner.nextInt();
+            if (index > 0 && index <= contactsToRemoveNumber.size()){
+                System.out.print("Введите номер телефона для удаления: ");
+                String phoneNumber = scanner.next();
+                Contact contactToRemoveNumber = contactsToRemoveNumber.get(index - 1);
+                for (Contact contact : contacts) {
+                    if (contactToRemoveNumber.equals(contact)) {
+                        if (contact.getPhoneNumber().contains(phoneNumber)){
+                            contact.removePhoneNumber(phoneNumber);
+                            System.out.println("Номер телефона удален");
+                        } else {
+                            System.out.println("У контакта нет такого номера телефона");
+                        }
+                    }
+                }
+            } else if (index == 0) {
+                System.out.println("Удаление номера отменено");
+            } else {
+                System.out.println("Неверный номер");
+            }
+        } else {
+            System.out.println("Контакты не найдены");
+        }
+    }
+
     public void searchContact(Scanner scanner) {
         System.out.print("Введите имя, фамилию или номер телефона контакта (или часть): ");
         String contactPart = scanner.next();

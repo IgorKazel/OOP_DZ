@@ -22,9 +22,11 @@ public class ContactsExporterXML implements ContactsExporter {
             xmlStreamWriter.writeStartElement("lastName");
             xmlStreamWriter.writeCharacters(contact.getLastName());
             xmlStreamWriter.writeEndElement();
+            for (int i = 0; i < contact.getPhoneNumber().size(); i++) {
             xmlStreamWriter.writeStartElement("phoneNumber");
-            xmlStreamWriter.writeCharacters(contact.getPhoneNumber());
+            xmlStreamWriter.writeCharacters(contact.getPhoneNumber().get(i));
             xmlStreamWriter.writeEndElement();
+            }
             xmlStreamWriter.writeEndElement();
         }
         xmlStreamWriter.writeEndElement();
